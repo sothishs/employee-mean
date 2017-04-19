@@ -6,7 +6,9 @@ function resetItem(){
    $scope.employee = {
       name : '',
       email : '',
-      phone : '',
+      dob : '',
+      department : '',
+      gender : '',
       id : ''
    };              
    $scope.displayForm = '';
@@ -23,7 +25,7 @@ resetItem();
 $scope.saveItem = function () {
   var emp = $scope.employee;
       if (emp.id.length == 0){
-            $http.get('/employee/create?name=' + emp.name + '&email=' +  emp.email + '&phone=' +  emp.phone).success(function(data) {
+            $http.get('/employee/create?name=' + emp.name + '&email=' +  emp.email + '&dob=' +  emp.dob + '&department=' +  emp.department + '&gender=' +  emp.gender).success(function(data) {
               $scope.items.push(data);
               $scope.displayForm = '';
               removeModal();
@@ -33,7 +35,7 @@ $scope.saveItem = function () {
   });
           }
           else{
-            $http.get('/employee/update/'+ emp.id +'?name=' + emp.name + '&email=' +  emp.email + '&phone=' +  emp.phone).success(function(data) {
+            $http.get('/employee/update/'+ emp.id +'?name=' + emp.name + '&email=' +  emp.email + '&dob=' +  emp.dob + '&department=' +  emp.department + '&gender=' +  emp.gender).success(function(data) {
               $scope.displayForm = '';
               removeModal();
             }).
