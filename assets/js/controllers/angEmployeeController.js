@@ -9,6 +9,7 @@ function resetItem(){
       dob : '',
       department : '',
       gender : '',
+      age : '',
       id : ''
    };              
    $scope.displayForm = '';
@@ -25,7 +26,22 @@ resetItem();
 $scope.saveItem = function () {
   var emp = $scope.employee;
       if (emp.id.length == 0){
-            $http.get('/employee/create?name=' + emp.name + '&email=' +  emp.email + '&dob=' +  emp.dob + '&department=' +  emp.department + '&gender=' +  emp.gender).success(function(data) {
+
+        /* Calculate Age */
+        var myage = 0;
+        var now = new Date();
+        var birthdate = emp.dob.split("/");
+        var born = new Date(birthdate[2], birthdate[1]-1, birthdate[0]);
+
+        var birthday = new Date(now.getFullYear(), born.getMonth(), born.getDate());
+        if (now >= birthday) 
+          myage = now.getFullYear() - born.getFullYear();
+        else
+          myage = now.getFullYear() - born.getFullYear() - 1;
+
+
+
+            $http.get('/employee/create?name=' + emp.name + '&email=' +  emp.email + '&dob=' +  emp.dob + '&department=' +  emp.department + '&gender=' +  emp.gender + '&age=' +  myage).success(function(data) {
               $scope.items.push(data);
               $scope.displayForm = '';
               removeModal();
@@ -35,7 +51,7 @@ $scope.saveItem = function () {
   });
           }
           else{
-            $http.get('/employee/update/'+ emp.id +'?name=' + emp.name + '&email=' +  emp.email + '&dob=' +  emp.dob + '&department=' +  emp.department + '&gender=' +  emp.gender).success(function(data) {
+            $http.get('/employee/update/'+ emp.id +'?name=' + emp.name + '&email=' +  emp.email + '&dob=' +  emp.dob + '&department=' +  emp.department + '&gender=' +  emp.gender + '&age=' +  myage).success(function(data) {
               $scope.displayForm = '';
               removeModal();
             }).
