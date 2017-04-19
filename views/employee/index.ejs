@@ -2,12 +2,13 @@
 <div ng-controller="angEmpController">
   
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()">Add</button>
-     <div class="row h3">
+     <div class="row h4">
           <div class="col-md-2">Name</div>
           <div class="col-md-2">Email</div>
           <div class="col-md-2">Date of Birth</div>
           <div class="col-md-2">Department</div>
           <div class="col-md-2">Gender</div>
+          <div class="col-md-2">Age</div>
           <div class="col-md-2"></div>
      </div>
  
@@ -17,6 +18,7 @@
           <div class="col-md-2" ng-bind="item.dob"></div>
           <div class="col-md-2" ng-bind="item.department"></div>
           <div class="col-md-2" ng-bind="item.gender"></div>
+          <div class="col-md-2" ng-bind="item.age"></div>
           <div class="col-md-2">  
            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)">Edit</button>
            <button class="btn" ng-click="removeItem(item)">Remove</button></div>
@@ -32,9 +34,16 @@
        
           <div class="form-group">  <input type="text" ng-model="employee.name"  class="form-control" placeholder="Name"/></div>
           <div class="form-group"><input type="text" ng-model="employee.email"  class="form-control" placeholder="Email"/></div>
-          <div class="form-group"> <input type="text" ng-model="employee.dob"  class="form-control" placeholder="DOB"/></div> 
+          <div class="form-group"> <input type="text" ng-model="employee.dob"  class="form-control" placeholder="mm/dd/yy"/></div> 
           <div class="form-group"> <input type="text" ng-model="employee.department"  class="form-control" placeholder="Department"/></div>  
-          <div class="form-group"> <input type="text" ng-model="employee.gender"  class="form-control" placeholder="gender"/></div>           
+          <div class="form-group"> 
+            <label for="" class="radio-inline gender">
+            <input type="radio" ng-model="employee.gender"  class="form-control" placeholder="gender" value="male" >Male
+            </label>
+            <label for="" class="radio-inline gender">
+            <input type="radio" ng-model="employee.gender"  class="form-control" placeholder="gender" value="female">Female
+            </label>
+            <!--input type="text" ng-model="employee.gender"  class="form-control" placeholder="gender"/--></div>           
       
       </div>
       <div class="modal-footer">       
