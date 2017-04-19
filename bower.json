@@ -1,0 +1,19 @@
+{
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "requirejs": "^2.3.3",
+    "angular": "^1.6.4"
+  },
+  "name": "employee-mean",
+  "version": "0.0.0",
+  "author": "admin",
+  "private": true
+}
